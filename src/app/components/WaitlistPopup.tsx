@@ -97,7 +97,7 @@ export default function WaitlistPopup({
                 Join The Waitlist
               </h2>
               <p className="text-gray-600">
-                We'll let you know what the next steps are
+                We&apos;ll let you know what the next steps are
               </p>
             </div>
 
