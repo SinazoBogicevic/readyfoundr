@@ -1,4 +1,5 @@
 // import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,13 +10,13 @@ import Link from "next/link";
 //   { icon: Linkedin, href: "#" },
 // ];
 
-const navLinks = [
-  { name: "Home", href: "#" },
-  { name: "What I Offer", href: "#services" },
-  { name: "How It Works", href: "#how-it-works" },
-  { name: "FAQ", href: "#faq" },
-  { name: "Privacy Policy", href: "/privacy" },
-  { name: "Terms of Service", href: "/terms" },
+const navLinks: { name: string; href: Route }[] = [
+  { name: "Home", href: "/" },
+  { name: "What I Offer", href: "/#services" },
+  { name: "How It Works", href: "/#how-it-works" },
+  { name: "FAQ", href: "/#faq" },
+  // { name: "Privacy Policy", href: "/privacy" },
+  // { name: "Terms of Service", href: "/terms" },
 ];
 
 export function Footer() {
