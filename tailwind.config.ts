@@ -14,12 +14,12 @@ export default {
       },
       keyframes: {
         "email-fly": {
-          "0%": { transform: "translate(0, 0) scale(1)", opacity: 1 },
+          "0%": { transform: "translate(0, 0) scale(1)", opacity: "1" },
           "50%": {
             transform: "translate(200px, -200px) scale(0.5)",
-            opacity: 0,
+            opacity: "0",
           },
-          "100%": { transform: "translate(0, 0) scale(1)", opacity: 1 },
+          "100%": { transform: "translate(0, 0) scale(1)", opacity: "1" },
         },
         "svg-fly": {
           "0%": { transform: "rotate(0deg)" },
