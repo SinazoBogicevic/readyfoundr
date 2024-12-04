@@ -2,11 +2,12 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const navItems = [
+const navItems: { name: string; href: Route }[] = [
   { name: "Home", href: "#" },
   { name: "What I Offer", href: "#services" },
   { name: "How It Works", href: "#how-it-works" },
