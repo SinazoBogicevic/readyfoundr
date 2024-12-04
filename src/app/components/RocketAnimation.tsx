@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useAnimation, Variants } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useAnimation, useInView, Variants } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const steps = [
   "Identify the target audience",
@@ -49,42 +49,49 @@ const circleVariants: Variants = {
 
 export default function RocketAnimation() {
   const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const [animationStage, setAnimationStage] = useState<
     "idle" | "launching" | "disappeared" | "reappearing"
   >("idle");
 
   useEffect(() => {
-    const animateSteps = async () => {
-      // Start the steps animation
-      await controls.start("visible");
+    if (isInView) {
+      const animateSteps = async () => {
+        // Start the steps animation
+        await controls.start("visible");
 
-      // Wait a moment after all steps are visible
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+        // Wait a moment after all steps are visible
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Launch the rocket
-      setAnimationStage("launching");
+        // Launch the rocket
+        setAnimationStage("launching");
 
-      // Wait for launch animation to complete
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+        // Wait for launch animation to complete
+        await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // Disappear the rocket
-      setAnimationStage("disappeared");
+        // Disappear the rocket
+        setAnimationStage("disappeared");
 
-      // Wait before reappearing
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+        // Wait before reappearing
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Reappear the rocket
-      setAnimationStage("reappearing");
+        // Reappear the rocket
+        setAnimationStage("reappearing");
 
-      // Wait for reappear animation to complete
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-    };
+        // Wait for reappear animation to complete
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+      };
 
-    animateSteps();
-  }, [controls]);
+      animateSteps();
+    }
+  }, [controls, isInView]);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-indigo-900 via-blue-900 to-gray-900 flex items-center justify-center p-4">
+    <div 
+      ref={ref}
+      className="relative min-h-screen bg-gradient-to-b from-indigo-900 via-blue-900 to-gray-900 flex items-center justify-center p-4"
+    >
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold text-white text-center mb-16">
           How to build a

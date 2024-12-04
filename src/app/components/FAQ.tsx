@@ -18,17 +18,17 @@ const faqs = [
   {
     question: "How much does it cost?",
     answer:
-      "The cost of building an MVP depends on various factors such as features, complexity, and timeline. Prices start at $5,000 and max out at $10,000. I never go over budget.",
+      "The cost of building an MVP depends on various factors such as features, complexity, and timeline. Prices start at $5,000 and tops out at $10,000. No hidden costs, no surprises.",
   },
   {
     question: "What technologies do you use?",
     answer:
-      "We use a variety of modern technologies depending on your project needs. This may include React, Node.js, Python, and various cloud services.",
+      "I use a variety of modern technologies depending on your project needs. This may include React, Node.js, Python, and various cloud services.",
   },
   {
     question: "What happens after the MVP is delivered?",
     answer:
-      "After delivering your MVP, we can help you gather and analyze user feedback, make improvements, and plan for future iterations of your product.",
+      "After delivering your MVP, I'll help you gather and analyze user feedback, make improvements, and plan for future iterations of your product.",
   },
 ];
 

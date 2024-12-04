@@ -1,12 +1,13 @@
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+// import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-const socialLinks = [
-  { icon: Facebook, href: "#" },
-  { icon: Twitter, href: "#" },
-  { icon: Instagram, href: "#" },
-  { icon: Linkedin, href: "#" },
-];
+// const socialLinks = [
+//   { icon: Facebook, href: "#" },
+//   { icon: Twitter, href: "#" },
+//   { icon: Instagram, href: "#" },
+//   { icon: Linkedin, href: "#" },
+// ];
 
 const navLinks = [
   { name: "Home", href: "#" },
@@ -23,12 +24,14 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-            <Link
-              href="/"
-              className="text-2xl font-bold"
-              style={{ fontFamily: "Afterglow Arrow, sans-serif" }}
-            >
-              Ready Foundr
+            <Link href="/" className="flex items-center text-xl font-bold">
+              <Image
+                src={"/logo.svg"}
+                alt="Ready Foundr Logo"
+                width={50}
+                height={50}
+              />
+              <span className="text-white ml-2">Ready Foundr</span>
             </Link>
           </div>
           <nav className="mb-6 md:mb-0">
@@ -45,7 +48,7 @@ export function Footer() {
               ))}
             </ul>
           </nav>
-          <div className="flex space-x-4">
+          {/* <div className="flex space-x-4">
             {socialLinks.map((link, index) => {
               const Icon = link.icon;
               return (
@@ -58,7 +61,7 @@ export function Footer() {
                 </a>
               );
             })}
-          </div>
+          </div> */}
         </div>
         <div className="mt-8 text-center text-gray-400">
           <p>

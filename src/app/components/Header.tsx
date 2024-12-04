@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -21,10 +22,17 @@ export function Header() {
         <div className="flex justify-between items-center py-4">
           <Link
             href="/"
-            className="text-2xl font-bold text-white"
+            className="flex items-center text-2xl font-bold text-white"
             style={{ fontFamily: "Afterglow Arrow, sans-serif" }}
           >
-            Ready Foundr
+            {" "}
+            <Image
+              src={"/logo.svg"}
+              alt="Ready Foundr Logo"
+              width={50}
+              height={50}
+            />
+            <span className="text-white ml-2">Ready Foundr</span>
           </Link>
           <nav className="hidden md:flex space-x-4 bg-white/10 backdrop-blur-lg rounded-full p-2">
             {navItems.map((item, index) => (
