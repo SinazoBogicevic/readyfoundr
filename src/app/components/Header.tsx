@@ -8,10 +8,11 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navItems: { name: string; href: Route }[] = [
-  { name: "Home", href: "#" },
-  { name: "What I Offer", href: "#services" },
-  { name: "How It Works", href: "#how-it-works" },
-  { name: "FAQ", href: "#faq" },
+  { name: "Home", href: "/" },
+  { name: "What I Offer", href: "/#services" },
+  { name: "How It Works", href: "/#how-it-works" },
+  { name: "FAQ", href: "/#faq" },
+  { name: "Blog", href: "/blog" },
 ];
 
 export function Header() {
