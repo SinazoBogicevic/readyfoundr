@@ -1,9 +1,10 @@
 import { ChevronRight } from "lucide-react";
+import type { Route } from "next";
 import Link from "next/link";
 
 interface BreadcrumbItem {
   label: string;
-  href?: string;
+  href?: Route;
 }
 
 interface BreadcrumbsProps {

@@ -19,6 +19,16 @@ interface MDXProps {
   target?: string;
 }
 
+interface MDXChild {
+  type: string;
+  props: {
+    src?: string;
+    alt?: string;
+    className?: string;
+    children?: React.ReactNode;
+  };
+}
+
 const BlogMeta = ({ readTime, date }: { readTime: string; date: string }) => (
   <div className="flex items-center gap-4 text-sm text-blue-400 mb-4">
     <p>{date}</p>
@@ -54,9 +64,9 @@ const mdxComponents = {
   ),
   p: (props: MDXProps) => {
     if (
-      typeof props.children === "object" &&
       props.children &&
-      "type" === "img"
+      typeof props.children === "object" &&
+      (props.children as MDXChild).type === "img"
     ) {
       return props.children;
     }
@@ -97,27 +107,29 @@ const mdxComponents = {
   ),
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const post = await getBlogPost(params.slug);
+type Params = { slug: string };
+
+interface Props {
+  params: Promise<Params>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
   if (!post) return {};
 
   const headersList = headers();
-  const domain = headersList.get("host") || "readyfoundr.com";
+  const domain = (await headersList).get("host") || "readyfoundr.com";
   const canonicalUrl = `https://${domain}/blog/${post.id}`;
 
   return {
     title: post.title,
     description: post.description,
     authors: [{ name: post.meta.author }],
-    keywords: post.meta.keywords,
     openGraph: {
       title: post.title,
       description: post.description,
-      type: "article",
       url: canonicalUrl,
       images: [
         {
@@ -137,23 +149,18 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const post = await getBlogPost(params.slug);
+export default async function BlogPost({ params }: Props) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
   const allPosts = await getBlogPosts();
-  const recommendedPosts = allPosts
-    .filter((p) => p.id !== params.slug)
-    .slice(0, 3);
+  const recommendedPosts = allPosts.filter((p) => p.id !== slug).slice(0, 3);
 
   if (!post) {
     notFound();
   }
 
   const headersList = headers();
-  const domain = headersList.get("host") || "readyfoundr.com";
+  const domain = (await headersList).get("host") || "readyfoundr.com";
   const postUrl = `https://${domain}/blog/${post.id}`;
 
   return (
