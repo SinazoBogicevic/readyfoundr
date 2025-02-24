@@ -12,7 +12,7 @@ const navItems: { name: string; href: Route }[] = [
   // { name: "What I Offer", href: "/#services" },
   // { name: "How It Works", href: "/#how-it-works" },
   // { name: "FAQ", href: "/#faq" },
-  { name: "Blog", href: "/blog" },
+  { name: "Blog", href: "/#blog" },
 ];
 
 export function Header() {

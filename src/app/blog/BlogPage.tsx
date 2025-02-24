@@ -39,7 +39,7 @@ export default function BlogPage() {
       <Header />
       <div className="min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-indigo-900">
         <div className="pt-32 pb-20">
-          <div className="container mx-auto px-4">
+          <div id="blog" className=" container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-bold text-white text-center mb-12">
               Blog
             </h1>
