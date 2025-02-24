@@ -124,13 +124,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonicalUrl = `https://${domain}/blog/${post.id}`;
 
   return {
-    title: post.title,
+    title: `${post.title} | Ready Foundr`,
     description: post.description,
     authors: [{ name: post.meta.author }],
+    keywords: post.meta.keywords,
     openGraph: {
       title: post.title,
       description: post.description,
       url: canonicalUrl,
+      type: "article",
+      publishedTime: post.date,
+      authors: [post.meta.author],
       images: [
         {
           url: post.meta.ogImage,
@@ -145,6 +149,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.description,
       images: [post.meta.ogImage],
+    },
+    alternates: {
+      canonical: canonicalUrl,
     },
   };
 }
