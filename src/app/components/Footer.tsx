@@ -12,9 +12,9 @@ import Link from "next/link";
 
 const navLinks: { name: string; href: Route }[] = [
   { name: "Home", href: "/" },
-  { name: "What I Offer", href: "/#services" },
-  { name: "How It Works", href: "/#how-it-works" },
-  { name: "FAQ", href: "/#faq" },
+  // { name: "What I Offer", href: "/#services" },
+  // { name: "How It Works", href: "/#how-it-works" },
+  // { name: "FAQ", href: "/#faq" },
   { name: "Blog", href: "/blog" },
   // { name: "Privacy Policy", href: "/privacy" },
   // { name: "Terms of Service", href: "/terms" },

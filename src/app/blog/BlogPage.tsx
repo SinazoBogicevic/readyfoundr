@@ -1,11 +1,38 @@
-import { Footer } from "@/app/components/Footer";
+"use client";
+
 import { Header } from "@/app/components/Header";
-import { getBlogPosts } from "@/app/lib/blog-data";
+import { BlogPost } from "@/app/lib/blog-data";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export default async function BlogPage() {
-  const posts = await getBlogPosts();
+export default function BlogPage() {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch("/api/blog");
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchPosts();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-indigo-900 flex items-center justify-center">
+        <div className="text-white">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <main className="min-h-screen">
@@ -49,7 +76,6 @@ export default async function BlogPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </main>
   );
 }

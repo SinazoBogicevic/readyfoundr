@@ -88,7 +88,7 @@ export default function RocketAnimation() {
   }, [controls, isInView]);
 
   return (
-    <div 
+    <div
       ref={ref}
       className="relative min-h-screen bg-gradient-to-b from-indigo-900 via-blue-900 to-gray-900 flex items-center justify-center p-4"
     >

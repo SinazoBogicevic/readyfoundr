@@ -2,9 +2,33 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata = {
-  title: "Ready Foundr",
+  title: "Ready Foundr | Learn How to Sell Your Product",
   description:
-    "Ready Foundr helps non-technical founders build successful MVPs quickly and efficiently. Turn your vision into reality with our expert development services.",
+    "Learn practical steps and tools to turn your product idea into revenue. Get expert guidance on product validation, sales strategies, and customer acquisition.",
+  keywords: [
+    "startup sales",
+    "product validation",
+    "founder sales",
+    "customer acquisition",
+    "startup revenue",
+    "product-market fit",
+    "sales strategy",
+    "startup growth",
+  ],
+  openGraph: {
+    title: "Ready Foundr | Learn How to Sell Your Product",
+    description:
+      "Learn practical steps and tools to turn your product idea into revenue. Get expert guidance on product validation, sales strategies, and customer acquisition.",
+    type: "website",
+    locale: "en_US",
+    url: "https://readyfoundr.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ready Foundr | Learn How to Sell Your Product",
+    description:
+      "Learn practical steps and tools to turn your product idea into revenue. Get expert guidance on product validation, sales strategies, and customer acquisition.",
+  },
 };
 
 export default function RootLayout({
